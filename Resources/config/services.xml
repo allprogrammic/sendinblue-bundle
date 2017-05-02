@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="sendinblue.api.endpoint">https://api.sendinblue.com/v2.0/</parameter>
+        <parameter key="sendinblue.api.timeout">10</parameter>
+    </parameters>
+
+    <services>
+        <service id="sendinblue.api.client" class="AllProgrammic\Bundle\SendinBlueBundle\Client">
+            <argument type="service" id="serializer" />
+            <argument>%sendinblue.api.endpoint%</argument>
+            <argument>%sendinblue.api.key%</argument>
+            <argument>%sendinblue.api.timeout%</argument>
+        </service>
+    </services>
+</container>

@@ -1,0 +1,41 @@
+{
+  "name": "allprogrammic/sendinblue-bundle",
+  "type": "symfony-bundle",
+  "description": "Symfony SendinblueBundle",
+  "keywords": [
+    "Asynchronous task management"
+  ],
+  "homepage": "http://github.com/allprogrammic/sendinblue-bundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "William Pottier",
+      "email": "developer@william-pottier.fr"
+    },
+    {
+      "name": "AllProgrammic",
+      "homepage": "https://allprogrammic.com"
+    }
+  ],
+  "require": {
+    "php": "^5.5.9 || ^7.0",
+    "symfony/framework-bundle": "^2.7 || ^3.0",
+
+  },
+  "autoload": {
+    "psr-4": {
+      "AllProgrammic\\Bundle\\SendinBlueBundle\\": ""
+    },
+    "exclude-from-classmap": [
+      "/Tests/"
+    ]
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  },
+  "support": {
+    "docs": "https://github.com/AllProgrammic/sendinblue-bundle/wiki"
+  }
+}
