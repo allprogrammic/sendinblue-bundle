@@ -37,7 +37,7 @@ You may also want to set it through your parameters.yml file.
 
 parameters.yml
 ```yaml
-parameters
+parameters:
   sendinblue_api_key: 'your key'
 ```
 
