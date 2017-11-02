@@ -17,8 +17,10 @@ class TransactionalMessage
 
     private $subject;
 
+    /** @var string|null */
     private $html;
 
+    /** @var string|null */
     private $text;
 
     private $images;
@@ -36,6 +38,7 @@ class TransactionalMessage
         $this->headers = [
             'Content-Type' => 'text/html; charset=utf-8'
         ];
+        $this->attachments = [];
     }
 
     public function toArray()
@@ -79,6 +82,22 @@ class TransactionalMessage
     }
 
     /**
+     * @return string
+     */
+    public function getSubject(): string
+    {
+        return $this->subject;
+    }
+
+    /**
+     * @param string $subject
+     */
+    public function setSubject(string $subject)
+    {
+        $this->subject = $subject;
+    }
+
+    /**
      * @param $email
      * @param $name
      *
@@ -99,21 +118,27 @@ class TransactionalMessage
      */
     public function addTo($email, $name = '')
     {
-        $this->to[$email] = $name;
+        if (strlen(trim($email)) > 0) {
+            $this->to[$email] = $name;
+        }
 
         return $this;
     }
 
     public function addCc($email, $name = '')
     {
-        $this->cc[$email] = $name;
+        if (strlen(trim($email)) > 0) {
+            $this->cc[$email] = $name;
+        }
 
         return $this;
     }
 
     public function addBcc($email, $name = '')
     {
-        $this->bcc[$email] = $name;
+        if (strlen(trim($email)) > 0) {
+            $this->bcc[$email] = $name;
+        }
 
         return $this;
     }
@@ -126,14 +151,22 @@ class TransactionalMessage
         return $this;
     }
 
-    public function html($content)
+    /**
+     * @return string
+     */
+    public function getHtml()
+    {
+        return $this->html;
+    }
+
+    public function setHtml($content)
     {
         $this->html = $content;
 
         return $this;
     }
 
-    public function text($content)
+    public function setText($content)
     {
         $this->text = $content;
 
@@ -143,5 +176,14 @@ class TransactionalMessage
     public function setTag($tag)
     {
         $this->headers['X-Mailin-Tag'] = $tag;
+
+        return $this;
+    }
+
+    public function attachFileContent($filename, $content)
+    {
+        $this->attachments[$filename] = base64_encode($content);
+
+        return $this;
     }
 }

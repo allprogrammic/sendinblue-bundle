@@ -10,11 +10,14 @@
     </parameters>
 
     <services>
-        <service id="sendinblue.api.client" class="AllProgrammic\Bundle\SendinBlueBundle\Client" public="true">
+
+        <service id="AllProgrammic\Bundle\SendinBlueBundle\Client" class="AllProgrammic\Bundle\SendinBlueBundle\Client">
             <argument type="service" id="serializer" />
             <argument>%sendinblue.api.endpoint%</argument>
             <argument>%sendinblue.api.key%</argument>
             <argument>%sendinblue.api.timeout%</argument>
         </service>
+
+        <service id="sendinblue.api.client" alias="AllProgrammic\Bundle\SendinBlueBundle\Client" public="true" />
     </services>
 </container>

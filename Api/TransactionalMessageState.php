@@ -79,23 +79,91 @@ class TransactionalMessageState
         return $object;
     }
 
-    public function hasBeenOpened()
+    /**
+     * @return bool
+     */
+    public function hasBeenOpened(): bool
     {
         return $this->openedAt !== null;
     }
 
-    public function hasBeenClicked()
+    /**
+     * @return bool
+     */
+    public function hasBeenClicked(): bool
     {
         return $this->clickedAt !== null;
     }
 
-    public function openCount()
+    /**
+     * @return int
+     */
+    public function openCount(): integer
     {
         return count($this->opens);
     }
 
-    public function clickCount()
+    /**
+     * @return int
+     */
+    public function clickCount(): integer
     {
         return count($this->clicks);
+    }
+
+    /**
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTo()
+    {
+        return $this->to;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFrom()
+    {
+        return $this->from;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSubject(): string
+    {
+        return $this->subject;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getSentAt(): ?\DateTime
+    {
+        return $this->sentAt;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getDeliveredAt(): ?\DateTime
+    {
+        return $this->deliveredAt;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getOpenedAt(): ?\DateTime
+    {
+        return $this->openedAt;
     }
 }
